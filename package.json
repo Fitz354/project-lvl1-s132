@@ -27,5 +27,8 @@
     "babel-core": "6.26.x ",
     "babel-preset-env": "1.6.x",
     "babel-preset-stage-0": "6.24.x"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.7"
   }
 }
