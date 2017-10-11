@@ -13,12 +13,14 @@ export default () => {
     const multiple = cons('*', (a, b) => a * b);
 
     const randomIndex = getRandomNumber(3);
-    if (randomIndex === 0) {
-      return plus;
-    } else if (randomIndex === 1) {
-      return minus;
+    switch (randomIndex) {
+      case 0:
+        return plus;
+      case 1:
+        return minus;
+      default:
+        return multiple;
     }
-    return multiple;
   };
 
   const getQuestion = () =>
