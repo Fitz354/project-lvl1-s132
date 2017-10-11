@@ -3,7 +3,8 @@ import readlineSync from 'readline-sync';
 export default (rulesMessage, getQuestionString, getQuestion, getCorrectAnswer) => {
   const winsLimit = 3;
 
-  console.log(`Welcome to Brain Games!\n${rulesMessage}\n`);
+  console.log('Welcome to Brain Games!');
+  console.log(`${rulesMessage}\n`);
   const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}`);
 
@@ -23,7 +24,7 @@ export default (rulesMessage, getQuestionString, getQuestion, getCorrectAnswer) 
     }
 
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'.\nLet's try again, ${userName}!`);
-    return gameIter(winsCount);
+    return false;
   };
 
   gameIter(0);
