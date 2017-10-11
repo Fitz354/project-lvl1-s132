@@ -1,7 +1,6 @@
-import { cons } from 'hexlet-pairs';
-import { makeExpression, toString, result } from '../expression';
+import { cons, car, cdr } from 'hexlet-pairs';
+import { run, makeTask } from '../game';
 import getRandomNumber from '../getRandomNumber';
-import startGame from '../startGame';
 
 export default () => {
   const maxValue = 10;
@@ -11,8 +10,8 @@ export default () => {
     const plus = cons('+', (a, b) => a + b);
     const minus = cons('-', (a, b) => a - b);
     const multiple = cons('*', (a, b) => a * b);
-
     const randomIndex = getRandomNumber(3);
+
     switch (randomIndex) {
       case 0:
         return plus;
@@ -23,11 +22,15 @@ export default () => {
     }
   };
 
-  const getQuestion = () =>
-    makeExpression(cons(getRandomNumber(maxValue), getRandomNumber(maxValue)), getRandomOperator());
+  const createTask = () => {
+    const leftOperand = getRandomNumber(maxValue);
+    const rightOperand = getRandomNumber(maxValue);
+    const operator = getRandomOperator();
+    const question = `${leftOperand} ${car(operator)} ${rightOperand}`;
+    const answer = cdr(operator)(leftOperand, rightOperand);
 
-  const getQuestionString = question => toString(question);
-  const getCorrectAnswer = question => String(result(question));
+    return makeTask(question, String(answer));
+  };
 
-  startGame(rulesMessage, getQuestionString, getQuestion, getCorrectAnswer);
+  run(rulesMessage, createTask);
 };

@@ -1,21 +1,24 @@
-import { cons } from 'hexlet-pairs';
-import { makeExpression, toString, result } from '../expression';
 import getRandomNumber from '../getRandomNumber';
-import startGame from '../startGame';
+import { run, makeTask } from '../game';
 
 export default () => {
   const maxValue = 100;
   const rulesMessage = 'Find the greatest common divisor of given numbers.';
-  const maxDivider = (a, b) => {
+  const getMaxDivider = (a, b) => {
     if (b === 0) {
       return a;
     }
 
-    return maxDivider(b, a % b);
+    return getMaxDivider(b, a % b);
   };
-  const getQuestion = () => makeExpression(cons(getRandomNumber(maxValue), getRandomNumber(maxValue)), cons('', maxDivider));
-  const getQuestionString = question => toString(question);
-  const getCorrectAnswer = question => String(result(question));
 
-  startGame(rulesMessage, getQuestionString, getQuestion, getCorrectAnswer);
+  const createTask = () => {
+    const num1 = getRandomNumber(maxValue);
+    const num2 = getRandomNumber(maxValue);
+    const answer = getMaxDivider(num1, num2);
+
+    return makeTask(`${num1} ${num2}`, String(answer));
+  };
+
+  run(rulesMessage, createTask);
 };
