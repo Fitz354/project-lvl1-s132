@@ -1,5 +1,5 @@
 import { cons } from 'hexlet-pairs';
-import getRandomNumber from '../getRandomNumber';
+import { getRandomNumber } from '../random';
 import run from '../game';
 
 const maxNumber = 20;
