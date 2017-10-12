@@ -29,5 +29,9 @@ export default (rulesMessage, createTask) => {
     return false;
   };
 
-  console.log(gameIter(0) ? `Congratulations, ${userName}` : `Let's try again, ${userName}!`);
+  if (gameIter(0)) {
+    console.log(`Congratulations, ${userName}`);
+  }
+
+  console.log(`Let's try again, ${userName}!`);
 };

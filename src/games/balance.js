@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import run from '../game';
-import { getRandomNumberInRange } from '../random';
+import { getRandomNumberInRange } from '../utils';
 
 const rulesMessage = 'Balance the given number.';
 const minNumber = 11;

@@ -10,6 +10,8 @@ gcd:
 	npm run babel-node -- src/bin/brain-gcd.js
 balance:
 	npm run babel-node -- src/bin/brain-balance.js
+progression:
+	npm run babel-node -- src/bin/brain-progression.js
 publish:
 	npm publish
 lint:

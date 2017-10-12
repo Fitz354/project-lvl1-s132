@@ -1,5 +1,5 @@
 import { cons, car, cdr } from 'hexlet-pairs';
-import { getRandomNumber } from '../random';
+import { getRandomNumber } from '../utils';
 import run from '../game';
 
 const maxValue = 10;
