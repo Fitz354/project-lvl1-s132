@@ -1,35 +1,33 @@
 import readlineSync from 'readline-sync';
-import { cons, car, cdr } from 'hexlet-pairs';
+import { car, cdr } from 'hexlet-pairs';
 
-const getUserName = () => readlineSync.question('May I have your name? ');
+const winsLimit = 3;
 
-export const makeTask = (question, answer) => cons(question, answer);
-
-export const run = (rulesMessage, createTask) => {
-  const winsLimit = 3;
-
+export default (rulesMessage, createTask) => {
   console.log('Welcome to Brain Games!');
   console.log(`${rulesMessage}\n`);
-  const userName = getUserName();
+  const userName = readlineSync.question('May I have your name? ');
   console.log(`Hello, ${userName}`);
 
   const gameIter = (winsCount) => {
     if (winsCount === winsLimit) {
-      return `Congratulations, ${userName}`;
+      return true;
     }
 
     const task = createTask();
     const question = car(task);
     const answer = cdr(task);
-    const userAnswer = readlineSync.question(`Question: ${question}\nYour answer: `);
+    console.log(`Question: ${question}`);
+    const userAnswer = readlineSync.question('Your answer: ');
 
     if (answer === userAnswer) {
       console.log('Correct!');
       return gameIter(winsCount + 1);
     }
 
-    return `'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'.\nLet's try again, ${userName}!`;
+    console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'`);
+    return false;
   };
 
-  console.log(gameIter(0));
+  console.log(gameIter(0) ? `Congratulations, ${userName}` : `Let's try again, ${userName}!`);
 };
