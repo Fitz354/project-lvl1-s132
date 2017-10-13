@@ -4,30 +4,30 @@ import { getRandomNumber } from '../utils';
 
 const rulesMessage = 'What number is missing in this progression?';
 const progressionLength = 10;
-const maxStart = 20;
-const maxStep = 10;
+const progressionMaxStart = 20;
+const progressionMaxStep = 10;
 
 const getProgressionWithGap = (start, step, length, gapIndex) => {
-  const iter = (progression, gap, count) => {
+  const makeProgression = (result, gap, count) => {
     if (length === count) {
-      return cons(progression, String(gap));
+      return cons(result, String(gap));
     }
 
     const nextItem = start + (step * count);
 
     if (count === gapIndex) {
-      return iter(progression.concat(' ..'), nextItem, count + 1);
+      return makeProgression(result.concat(' ..'), nextItem, count + 1);
     }
 
-    return iter(progression.concat(` ${nextItem}`), gap, count + 1);
+    return makeProgression(result.concat(` ${nextItem}`), gap, count + 1);
   };
 
-  return iter('', 0, 0);
+  return makeProgression('', 0, 0);
 };
 
 const createTask = () => {
-  const startProgression = getRandomNumber(maxStart);
-  const stepProgression = getRandomNumber(maxStep);
+  const startProgression = getRandomNumber(progressionMaxStart);
+  const stepProgression = getRandomNumber(progressionMaxStep);
   const gapIndex = getRandomNumber(progressionLength);
 
   return getProgressionWithGap(startProgression, stepProgression, progressionLength, gapIndex);
