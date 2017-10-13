@@ -9,8 +9,10 @@ const isPrime = (num) => {
     return false;
   }
 
+  const maxDivisor = Math.sqrt(num);
+
   const hasDivisor = (testDivisor) => {
-    if (testDivisor * testDivisor > num) {
+    if (testDivisor > maxDivisor) {
       return true;
     }
     if (num % testDivisor === 0) {
