@@ -46,7 +46,7 @@ const getBalanceNumber = (num) => {
   const numLength = String(num).length;
   const sumDigits = getSumDigits(num);
   const minDigit = Math.floor(sumDigits / numLength);
-  const decimalsToIncrease = sumDigits - (minDigit * numLength);
+  const decimalsToIncrease = sumDigits % numLength;
   const numberFromMinDigits = makeNumberWithSameDigits(minDigit, numLength);
 
   if (decimalsToIncrease === 0) {
