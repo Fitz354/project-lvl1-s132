@@ -4,23 +4,23 @@ import run from '../game';
 
 const maxValue = 100;
 const rulesMessage = 'Answer "yes" if number prime otherwise answer "no".';
-const isPrime = (number) => {
-  if (number < 2) {
+const isPrime = (num) => {
+  if (num < 2) {
     return false;
   }
 
-  const iter = (i) => {
-    if (i * i > number) {
+  const hasDivisor = (testDivisor) => {
+    if (testDivisor * testDivisor > num) {
       return true;
     }
-    if (number % i === 0) {
+    if (num % testDivisor === 0) {
       return false;
     }
 
-    return iter(i + 1);
+    return hasDivisor(testDivisor + 1);
   };
 
-  return iter(2);
+  return hasDivisor(2);
 };
 
 const createTask = () => {
