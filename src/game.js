@@ -28,8 +28,8 @@ export default (rulesMessage, createTask) => {
     console.log(`'${userAnswer}' is wrong answer ;(. Correct answer was '${answer}'`);
     return false;
   };
-
-  if (gameIter(0)) {
+  const isWin = gameIter(0);
+  if (isWin) {
     console.log(`Congratulations, ${userName}`);
   } else {
     console.log(`Let's try again, ${userName}!`);

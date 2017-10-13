@@ -1,6 +1,6 @@
 import { cons } from 'hexlet-pairs';
 import run from '../game';
-import { getRandomNumber } from '../utils';
+import { getRandomNumber, getRandomNumberInRange } from '../utils';
 
 const rulesMessage = 'What number is missing in this progression?';
 const progressionLength = 10;
@@ -27,7 +27,7 @@ const getProgressionWithGap = (start, step, length, gapIndex) => {
 
 const createTask = () => {
   const startProgression = getRandomNumber(progressionMaxStart);
-  const stepProgression = getRandomNumber(progressionMaxStep);
+  const stepProgression = getRandomNumberInRange(1, progressionMaxStep);
   const gapIndex = getRandomNumber(progressionLength);
 
   return getProgressionWithGap(startProgression, stepProgression, progressionLength, gapIndex);
