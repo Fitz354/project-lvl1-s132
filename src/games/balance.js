@@ -8,38 +8,38 @@ const maxNumber = 9999;
 
 const getSumDigits = (num) => {
   const strNum = String(num);
-  const iter = (sum, index) => {
+  const calcSum = (sum, index) => {
     if (strNum.length === index) {
       return sum;
     }
 
-    return iter(sum + Number(strNum[index]), index + 1);
+    return calcSum(sum + Number(strNum[index]), index + 1);
   };
 
-  return iter(0, 0);
+  return calcSum(0, 0);
 };
 
 const makeNumberWithSameDigits = (digit, length) => {
-  const iter = (acc) => {
-    if (acc.length === length) {
-      return Number(acc);
+  const makeNumber = (num) => {
+    if (num.length === length) {
+      return Number(num);
     }
-    return iter(acc.concat(digit));
+    return makeNumber(num.concat(digit));
   };
 
-  return iter('');
+  return makeNumber('');
 };
 
 const addOneToDecimals = (num, decimals) => {
-  const iter = (acc, count, decimal) => {
+  const calc = (result, count, decimal) => {
     if (count === 0) {
-      return acc;
+      return result;
     }
 
-    return iter(acc + decimal, count - 1, decimal * 10);
+    return calc(result + decimal, count - 1, decimal * 10);
   };
 
-  return iter(num, decimals, 1);
+  return calc(num, decimals, 1);
 };
 
 const getBalanceNumber = (num) => {
